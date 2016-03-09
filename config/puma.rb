@@ -1,2 +1,1 @@
-workers 8
-threads 16, 16
+threads 0, 256

@@ -1,16 +1,6 @@
-#!/usr/bin/env RACK_ENV=production ruby
+require 'bundler'
 
-require 'bundler/inline'
-
-gemfile(true) do
-  source 'https://rubygems.org'
-
-  gem 'connection_pool'
-  gem 'dalli', require: 'rack/session/dalli',
-    git: 'https://github.com/mwpastore/dalli.git', branch: 'rack-session'
-  gem 'puma', require: false
-  gem 'sinatra', require: 'sinatra/base'
-end
+Bundler.require :default
 
 class DalliBench < Sinatra::Base
   configure do
@@ -21,7 +11,7 @@ class DalliBench < Sinatra::Base
   end
 
   use Rack::Session::Dalli,
-    pool_size: 16,
+    pool_size: 256,
     renew: true
 
   get '/' do
