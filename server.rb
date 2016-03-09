@@ -1,3 +1,5 @@
+#!/usr/bin/env RACK_ENV=production ruby
+
 require 'bundler'
 
 Bundler.require :default
@@ -11,8 +13,9 @@ class DalliBench < Sinatra::Base
   end
 
   use Rack::Session::Dalli,
-    pool_size: 256,
-    renew: true
+    renew: true,
+    expire_after: 60,
+    pool_size: 10
 
   get '/' do
     session[:name] ||= params[:name] || 'world'

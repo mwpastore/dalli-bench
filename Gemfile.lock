@@ -1,0 +1,34 @@
+GIT
+  remote: https://github.com/mwpastore/dalli.git
+  revision: 866bb5b3e8b255a043a1e09a38096bc58a365c66
+  branch: rack-session
+  specs:
+    dalli (2.7.6)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    connection_pool (2.2.0)
+    puma (3.1.0)
+    puma (3.1.0-java)
+    rack (1.6.4)
+    rack-protection (1.5.3)
+      rack
+    sinatra (1.4.7)
+      rack (~> 1.5)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
+    tilt (2.0.2)
+
+PLATFORMS
+  java
+  ruby
+
+DEPENDENCIES
+  connection_pool
+  dalli!
+  puma
+  sinatra
+
+BUNDLED WITH
+   1.11.2
