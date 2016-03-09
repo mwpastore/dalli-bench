@@ -79,4 +79,8 @@ eval "$(rbenv init -)"
 rbenv rehash
 gem install --user-install bundler
 
+#rbenv install jruby-9.0.5.0
+#rbenv install jruby-1.7.24
+#rbenv install rbx-2.5.8
+
 sudo reboot
