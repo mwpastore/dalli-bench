@@ -1,4 +1,4 @@
-#!/bin/sh -ex
+#!/bin/bash -ex
 
 cd $(dirname $0)
 
@@ -19,11 +19,11 @@ sudo apt-get -y install \
   ruby2.2 \
   ruby2.2-dev
 
-sudo ln -s /usr/bin/llvm-config-3.5 /usr/bin/llvm-config # why
+sudo ln -sf /usr/bin/llvm-config-3.5 /usr/bin/llvm-config # why
 
 sudo sed -i -e 's/^-m [0-9]*/-m 15872/' /etc/memcached.conf
 
-cat <<EOF >>/etc/sysctl.conf
+cat <<EOF | sudo dd of=/etc/sysctl.conf oflag=append conv=notrunc
 vm.swappiness = 0
 net.ipv4.ip_local_port_range = 1024 65535
 net.ipv4.tcp_window_scaling = 1
@@ -46,7 +46,7 @@ net.ipv4.tcp_fin_timeout = 15
 net.ipv4.tcp_slow_start_after_idle = 0
 EOF
 
-cat <<EOF | sudo dd of=/etc/security/limits.conf oflag=append
+cat <<EOF | sudo dd of=/etc/security/limits.conf oflag=append conv=notrunc
 bench      hard    nofile      500000
 bench      soft    nofile      500000
 EOF
