@@ -3,6 +3,7 @@
 cd $(dirname $0)
 
 sudo apt-add-repository -y ppa:brightbox/ruby-ng
+sudo add-apt-repository -y ppa:webupd8team/java
 
 sudo apt-get update
 sudo apt-get -y upgrade
@@ -15,9 +16,11 @@ sudo apt-get -y install \
   memcached \
   openjdk-7-jre-headless \
   haveged \
+  htop \
   clang-3.5 \
   ruby2.2 \
   ruby2.2-dev
+# oracle-java8-installer
 
 sudo ln -sf /usr/bin/llvm-config-3.5 /usr/bin/llvm-config # why
 
@@ -69,18 +72,15 @@ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 cat <<'EOF' >>~/.bashrc
-export PATH="$HOME/.rbenv/bin:$HOME/.gem/ruby/2.2.0/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 EOF
 
-export PATH="$HOME/.rbenv/bin:$HOME/.gem/ruby/2.2.0/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-rbenv rehash
-gem install --user-install bundler
-
-#rbenv install jruby-9.0.5.0
-#rbenv install jruby-1.7.24
-#rbenv install rbx-2.5.8
+rbenv install jruby-9.0.5.0
+rbenv global jruby-9.0.5.0
+gem install bundler
 
 sudo reboot

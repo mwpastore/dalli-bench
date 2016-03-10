@@ -1,17 +1,33 @@
 #!/bin/bash
 
-#cd $(dirname $0)
-#bundle install
+export THREAD_DEPTH=400
+PORT=9292
+
+cd $(dirname $0)
+bundle install
+
+jruby -J-Xmn512m -J-Xms2048m -J-Xmx2048m -J-server \
+  -S rackup -s Puma -O Threads=$THREAD_DEPTH:$THREAD_DEPTH -p $PORT \
+  -E production -r ./server -b 'run DalliBench.new' &
+
+puma_pid=$!
+
+echo " ** waiting for jruby..."
+sleep 10
 
 function bench {
   local time=$1
 
-  wrk -t12 -c400 -d$time http://localhost:4567
+  wrk -t12 -c$THREAD_DEPTH -d$time http://localhost:$PORT
 }
 
-echo "warming up..."
-bench 30s >/dev/null 2>&1
+echo " ** warming up..."
+bench 60s >/dev/null 2>&1
 
+echo " ** sleeping..."
 sleep 10
 
 bench 60s
+
+kill $puma_pid
+wait $puma_pid

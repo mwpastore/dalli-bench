@@ -6,12 +6,12 @@
 
     useradd -g users -G sudo -m -s /bin/bash bench
 
+    visudo # add NOPASSWD: before the last ALL
+
     su - bench
 
     mkdir ~/.ssh
     cat >~/.ssh/authorized_keys # paste your primary key and press Ctrl-D
-
-    visudo # add NOPASSWD: before the last ALL
 
     logout
 
