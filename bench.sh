@@ -18,7 +18,7 @@ sleep 10
 function bench {
   local time=$1
 
-  wrk -t12 -c$THREAD_DEPTH -d$time http://localhost:$PORT
+  wrk -t12 -c$THREAD_DEPTH -d$time -H'Cookie: rack.session=12345' http://localhost:$PORT
 }
 
 echo " ** warming up..."
