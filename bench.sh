@@ -4,7 +4,7 @@ export THREAD_DEPTH=400
 PORT=9292
 
 cd $(dirname $0)
-bundle install
+bundle install --jobs=4
 
 jruby -J-Xmn512m -J-Xms2048m -J-Xmx2048m -J-server \
   -S rackup -s Puma -O Threads=$THREAD_DEPTH:$THREAD_DEPTH -p $PORT \
