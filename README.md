@@ -19,6 +19,7 @@
 
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"
+    git config --global push.default simple
 
     git clone git@github.com:mwpastore/dalli-bench.git ~/src/dalli-bench
     src/dalli-bench/setup.sh

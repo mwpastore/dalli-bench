@@ -12,7 +12,7 @@ class DalliBench < Sinatra::Base
     renew: true,
     memcache_server: '127.0.0.1:11211',
     expire_after: 60,
-    pool_size: ENV.fetch('THREAD_DEPTH')
+    pool_size: ENV.fetch('THREAD_DEPTH').to_i
 
   get '/' do
     session[:name] ||= params[:name] || 'world'.freeze
