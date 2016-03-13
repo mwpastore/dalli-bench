@@ -8,7 +8,7 @@ bundle install --jobs=4
 
 jruby -J-Xmn512m -J-Xms2048m -J-Xmx2048m -J-server \
   -S rackup -s Puma -O Threads=$THREAD_DEPTH:$THREAD_DEPTH -p $PORT \
-  -E production -r ./server -b 'run DalliBench.new' &
+  -E production -r ./server -b 'run DalliBench' &
 
 puma_pid=$!
 
