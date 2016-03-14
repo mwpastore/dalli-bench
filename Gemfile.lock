@@ -8,6 +8,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    benchmark-ips (2.5.0)
     connection_pool (2.2.0)
     kgio (2.10.0)
     puma (3.1.0)
@@ -26,6 +27,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  benchmark-ips
   connection_pool
   dalli!
   kgio

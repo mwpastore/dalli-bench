@@ -18,11 +18,24 @@
 
     ssh -A bench@host
 
-## Contribute
+## Benchmarking
+
+1.  Start the server
+
+        ./server.sh
+
+1.  Wait for it to be ready
+
+1.  Run the benchmark
+
+        ./bensh.sh
+
+## Contributing
 
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"
     git config --global push.default simple
+    git remote set-url origin git@github.com:mwpastore/dalli-bench.git
 
 ## TODO
 
