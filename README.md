@@ -6,7 +6,7 @@
 
     useradd -g users -G sudo -m -s /bin/bash bench
 
-    visudo # add NOPASSWD: before the last ALL
+    visudo # add NOPASSWD: to %sudo line before the last ALL
 
     su - bench
 
@@ -28,7 +28,7 @@
 
 1.  Run the benchmark
 
-        ./bensh.sh
+        ./bench.sh
 
 ## Contributing
 

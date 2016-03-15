@@ -58,7 +58,7 @@ mkdir -p ~/src
 pushd ~/src
 git clone https://github.com/wg/wrk.git
 pushd wrk
-make
+make -j4
 sudo ln -sf ~/src/wrk/wrk /usr/local/bin/wrk
 popd
 popd

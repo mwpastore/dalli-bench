@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mwpastore/dalli.git
-  revision: b1ef55e00de8904257228fdfa71f70bf38806d91
+  revision: bdddc966e6a99b52afda2a6fdcfcec46de1ad434
   branch: rack-session
   specs:
     dalli (2.7.6)
