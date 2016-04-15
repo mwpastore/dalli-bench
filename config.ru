@@ -8,4 +8,4 @@ use Rack::Session::Dalli,
   expire_after: 60,
   pool_size: ENV.fetch('THREAD_DEPTH').to_i
 
-run DalliBench
+run DalliBench.new

@@ -8,7 +8,9 @@ echo " ** installing gems"
 bundle install --jobs=4
 
 echo " ** waiting for juby"
+  #--profile.api --profile.json --profile.out head.json \
 jruby -J-Xmn512m -J-Xms2048m -J-Xmx2048m -J-server \
+  -Xcompile.invokedynamic=true -G \
   -S rackup -s Puma -O Threads=$THREAD_DEPTH:$THREAD_DEPTH -p $PORT \
   -E production &
 

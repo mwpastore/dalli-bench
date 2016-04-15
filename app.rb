@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DalliBench < Sinatra::Base
   configure do
     disable :static
@@ -5,7 +7,7 @@ class DalliBench < Sinatra::Base
   end
 
   get '/' do
-    session[:name] ||= params[:name] || 'world'.freeze
+    session[:name] ||= params[:name] || 'world'
     "Hello, #{session[:name]}!\n"
   end
 end

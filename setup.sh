@@ -2,6 +2,9 @@
 
 cd $(dirname $0)
 
+sudo apt-get -y install \
+  software-properties-common
+
 sudo apt-add-repository -y ppa:brightbox/ruby-ng
 sudo add-apt-repository -y ppa:webupd8team/java
 
@@ -56,8 +59,9 @@ EOF
 
 mkdir -p ~/src
 pushd ~/src
-git clone https://github.com/wg/wrk.git
+git clone --no-checkout https://github.com/wg/wrk.git
 pushd wrk
+git checkout 03dc368674402f4b26a862f941f29887d06fd564
 make -j4
 sudo ln -sf ~/src/wrk/wrk /usr/local/bin/wrk
 popd
