@@ -22,7 +22,8 @@ sudo apt-get -y install \
   htop \
   clang-3.5 \
   ruby2.2 \
-  ruby2.2-dev
+  ruby2.2-dev \
+  vim-nox
 # oracle-java8-installer
 
 sudo ln -sf /usr/bin/llvm-config-3.5 /usr/bin/llvm-config # why
