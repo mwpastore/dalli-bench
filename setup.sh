@@ -5,9 +5,6 @@ cd $(dirname $0)
 sudo apt-get -y install \
   software-properties-common
 
-sudo apt-add-repository -y ppa:brightbox/ruby-ng
-sudo add-apt-repository -y ppa:webupd8team/java
-
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y install \
@@ -17,16 +14,10 @@ sudo apt-get -y install \
   libedit-dev \
   libncurses5-dev \
   memcached \
-  openjdk-7-jre-headless \
   haveged \
   htop \
-  clang-3.5 \
-  ruby2.2 \
-  ruby2.2-dev \
+  openjdk-8-jre-headless \
   vim-nox
-# oracle-java8-installer
-
-sudo ln -sf /usr/bin/llvm-config-3.5 /usr/bin/llvm-config # why
 
 sudo sed -i -e 's/^-m [0-9]*/-m 15872/' /etc/memcached.conf
 
@@ -60,7 +51,7 @@ EOF
 
 mkdir -p ~/src
 pushd ~/src
-git clone --no-checkout https://github.com/wg/wrk.git
+[[ -d wrk ]] || git clone --no-checkout https://github.com/wg/wrk.git
 pushd wrk
 git checkout 03dc368674402f4b26a862f941f29887d06fd564
 make -j4
@@ -73,8 +64,8 @@ install: --no-document
 update: --no-document
 EOF
 
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+[[ -d ~/.rbenv ]] || git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+[[ -d ~/.rbenv/plugins/ruby-build ]] || git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 cat <<'EOF' >>~/.bashrc
 export PATH="$HOME/.rbenv/bin:$PATH"
